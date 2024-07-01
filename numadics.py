@@ -12,6 +12,8 @@ app = Flask(__name__)
 
 @app.route("/get-report")
 def get_report():
+  startTime=0
+  endTime=sys.maxsize
   startTime=int(request.args.get("start"));
   endTime=int(request.args.get("end"));
   return read_csv(startTime,endTime)
