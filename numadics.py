@@ -55,12 +55,12 @@ def read_csv(startTime,endTime):
     #print("transportList "+str(transportList))
     timeOne=float(vPlateFile.tail(1)['tis'])
     timetwo=float(vPlateFile.head(1)['tis'])
-    totalTime=timeOne-timetwo
+    totalTime=(timeOne-timetwo)/3600
     #iterate through each row of vehicle 
     #calculating distance by subtraction t2-t1*speed
     for index, row in vPlateFile.iterrows():
         if(prevTime !=-1 and prevSpeed != -1):
-            dist=dist+((row['tis']-prevTime)*prevSpeed)
+            dist=dist+((row['tis']-prevTime)/3600*prevSpeed)
         prevTime=row['tis']
         prevSpeed=row['spd']
         if(row['osf'] is not False):
